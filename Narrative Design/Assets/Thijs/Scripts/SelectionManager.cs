@@ -41,8 +41,18 @@ public class SelectionManager : MonoBehaviour
 				{
 					if (currentObject == null)
 					{
-						currentObject = pickedUpObject;
-						PickUp();
+                        if(pickedUpObject.GetComponent<Pickup>().isFinal == true)
+                        {
+                            print("play sound");
+							pickedUpObject.GetComponent<PlaySound>().UseSoundManager();
+							currentObject.GetComponent<Pickup>().LoadNextScene();
+						}
+                        else
+                        {
+							currentObject = pickedUpObject;
+							PickUp();
+                        }
+						pickedUpObject.GetComponent<PlaySound>().UseSoundManager();
 					}
 				}
 			}
@@ -64,16 +74,6 @@ public class SelectionManager : MonoBehaviour
 			}
         }
     }
-
-	private void PutDown()
-	{
-		//currentObject.GetComponent<Collider>().enabled = true;
-		currentObject.transform.position = placeParent.transform.position;
-		currentObject.transform.parent = placeParent.transform;
-		print("put down object");
-		currentObject = null;
-
-	}
 
 	private void SetHighlightMaterial(Transform selection)
 	{
@@ -99,7 +99,18 @@ public class SelectionManager : MonoBehaviour
 		currentObject.GetComponent<Collider>().enabled = false;
 		currentObject.transform.parent = playerParent.transform;
 		currentObject.transform.position = playerParent.transform.position;
+        currentObject.transform.localScale = new Vector3(1,1,1);
 		print("picked up object");
-        currentObject.GetComponent<PlaySound>().UseSoundManager();
     }
+
+	private void PutDown()
+	{
+		//currentObject.GetComponent<Collider>().enabled = true;
+		currentObject.transform.position = placeParent.transform.position;
+		currentObject.transform.parent = placeParent.transform;
+		currentObject.transform.localScale = new Vector3(1, 1, 1);
+		print("put down object");
+		currentObject = null;
+
+	}
 }

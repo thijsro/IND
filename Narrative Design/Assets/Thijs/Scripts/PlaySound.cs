@@ -10,7 +10,7 @@ public class PlaySound : MonoBehaviour
 
     private void Start() 
     {
-        myAudioSource.GetComponent<AudioSource>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     public void UseSoundManager()
