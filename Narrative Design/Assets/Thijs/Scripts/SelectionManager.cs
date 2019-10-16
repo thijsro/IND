@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,14 +11,12 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private Material highlightMaterial;
     [SerializeField] private Material defaultMaterial;
     [SerializeField] public LayerMask objectLayer;
+	[SerializeField] public LayerMask placeLayer;
 	[SerializeField] private float hitDistance = 10f;
     [SerializeField] private GameObject playerParent;
+	[SerializeField] private GameObject placeParent;
     public Pickup currentObject;
-
-
 	Transform _selection;
-
-    
 
     // Update is called once per frame
     void Update()
@@ -46,11 +45,35 @@ public class SelectionManager : MonoBehaviour
 						PickUp();
 					}
 				}
-
 			}
-
 		}
+        if (Physics.Raycast(ray, out hit, hitDistance, placeLayer))
+        {
+			var selection = hit.transform;
+			if (selection.CompareTag(selectableTag))
+			{
+				SetHighlightMaterial(selection);
+
+				if (Input.GetButton("Fire1"))
+				{
+					if (currentObject != null)
+					{
+						PutDown();
+					}
+				}
+			}
+        }
     }
+
+	private void PutDown()
+	{
+		//currentObject.GetComponent<Collider>().enabled = true;
+		currentObject.transform.position = placeParent.transform.position;
+		currentObject.transform.parent = placeParent.transform;
+		print("put down object");
+		currentObject = null;
+
+	}
 
 	private void SetHighlightMaterial(Transform selection)
 	{
@@ -77,5 +100,6 @@ public class SelectionManager : MonoBehaviour
 		currentObject.transform.parent = playerParent.transform;
 		currentObject.transform.position = playerParent.transform.position;
 		print("picked up object");
+        currentObject.GetComponent<PlaySound>().UseSoundManager();
     }
 }
