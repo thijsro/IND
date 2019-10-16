@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    [SerializeField] private string selectableTag = "Selectable";
+	GameObject pickedUpObject;
+
+	[SerializeField] private string selectableTag = "Selectable";
     [SerializeField] private Material highlightMaterial;
     [SerializeField] private Material defaultMaterial;
+    [SerializeField] public LayerMask objectLayer;
+	[SerializeField] private float hitDistance = 10f;
+    [SerializeField] private GameObject playerParent;
+    public Pickup currentObject;
 
-    private Transform _selection;
+
+	Transform _selection;
+
+    
 
     // Update is called once per frame
     void Update()
@@ -22,9 +31,10 @@ public class SelectionManager : MonoBehaviour
         }
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit, hitDistance, objectLayer))
         {
             var selection = hit.transform;
+			Pickup pickedUpObject = hit.collider.gameObject.GetComponent<Pickup>();
             if(selection.CompareTag(selectableTag))
             {
                 var selectionRenderer = selection.GetComponent<Renderer>();
@@ -34,8 +44,26 @@ public class SelectionManager : MonoBehaviour
                     selection.GetComponent<Outline>().enabled = true;
                 }  
                 _selection = selection;
+
+                if(Input.GetButton("Fire1"))
+                {
+                    if(currentObject == null)
+                    {
+                        currentObject = pickedUpObject;
+						PickUp();
+					}
+                }
+                
             }
 
         }
+    }
+
+    private void PickUp()
+    {
+		currentObject.GetComponent<Collider>().enabled = false;
+		currentObject.transform.parent = playerParent.transform;
+		currentObject.transform.position = playerParent.transform.position;
+		print("picked up object");
     }
 }
