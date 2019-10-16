@@ -23,43 +23,55 @@ public class SelectionManager : MonoBehaviour
     void Update()
     {
         if(_selection != null)
-        {
-            var selectionRenderer = _selection.GetComponent<Renderer>();
-            selectionRenderer.material = defaultMaterial;
-			_selection.GetComponent<Outline>().enabled = false;
-			_selection = null;
-        }
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		{
+			SetDefaultMaterial();
+		}
+
+		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+
         if(Physics.Raycast(ray, out hit, hitDistance, objectLayer))
         {
             var selection = hit.transform;
 			Pickup pickedUpObject = hit.collider.gameObject.GetComponent<Pickup>();
             if(selection.CompareTag(selectableTag))
-            {
-                var selectionRenderer = selection.GetComponent<Renderer>();
-                if (selectionRenderer != null)
-                {
-                    selectionRenderer.material = highlightMaterial;
-                    selection.GetComponent<Outline>().enabled = true;
-                }  
-                _selection = selection;
+			{
+				SetHighlightMaterial(selection);
 
-                if(Input.GetButton("Fire1"))
-                {
-                    if(currentObject == null)
-                    {
-                        currentObject = pickedUpObject;
+				if (Input.GetButton("Fire1"))
+				{
+					if (currentObject == null)
+					{
+						currentObject = pickedUpObject;
 						PickUp();
 					}
-                }
-                
-            }
+				}
 
-        }
+			}
+
+		}
     }
 
-    private void PickUp()
+	private void SetHighlightMaterial(Transform selection)
+	{
+		var selectionRenderer = selection.GetComponent<Renderer>();
+		if (selectionRenderer != null)
+		{
+			selectionRenderer.material = highlightMaterial;
+			selection.GetComponent<Outline>().enabled = true;
+		}
+		_selection = selection;
+	}
+
+	private void SetDefaultMaterial()
+	{
+		var selectionRenderer = _selection.GetComponent<Renderer>();
+		selectionRenderer.material = defaultMaterial;
+		_selection.GetComponent<Outline>().enabled = false;
+		_selection = null;
+	}
+
+	private void PickUp()
     {
 		currentObject.GetComponent<Collider>().enabled = false;
 		currentObject.transform.parent = playerParent.transform;
