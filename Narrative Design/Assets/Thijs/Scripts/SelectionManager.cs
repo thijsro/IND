@@ -16,7 +16,8 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private GameObject playerParent;
 	[SerializeField] private GameObject placeParent;
     public Pickup currentObject;
-	Transform _selection;
+	public Transform _selection;
+	
 
     // Update is called once per frame
     void Update()
@@ -68,6 +69,8 @@ public class SelectionManager : MonoBehaviour
 				{
 					if (currentObject != null)
 					{
+						placeParent = selection.Find("Parent").gameObject;
+						Debug.Log("parent found");
 						PutDown();
 					}
 				}
@@ -105,12 +108,21 @@ public class SelectionManager : MonoBehaviour
 
 	private void PutDown()
 	{
-		//currentObject.GetComponent<Collider>().enabled = true;
-		currentObject.transform.position = placeParent.transform.position;
-		currentObject.transform.parent = placeParent.transform;
-		currentObject.transform.localScale = new Vector3(1, 1, 1);
-		print("put down object");
-		currentObject = null;
+		currentObject.GetComponent<Pickup>().PlaceObject(currentObject, _selection);
+		if(currentObject.GetComponent<Pickup>().canPlace == true)
+		{
+			//currentObject.GetComponent<Collider>().enabled = true;
+			currentObject.transform.position = placeParent.transform.position;
+			currentObject.transform.parent = placeParent.transform;
+			//currentObject.transform.localScale = new Vector3(1, 1, 1);
+			print("put down object");
+			currentObject = null;
+		}
+		else
+		{
+			print("cannot place here");
+		}
+
 
 	}
 }

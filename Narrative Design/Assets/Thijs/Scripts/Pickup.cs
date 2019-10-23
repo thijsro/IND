@@ -7,6 +7,24 @@ public class Pickup : MonoBehaviour
 {
 	public bool isFinal = false;
 
+	[SerializeField] int objectType;
+	public bool canPlace = true;
+
+	public bool PlaceObject(Pickup currentObject, Transform PlaceObject)
+	{
+		if(currentObject.objectType == PlaceObject.GetComponent<Pickup>().objectType)
+		{
+			canPlace = true;
+		}
+		else
+		{
+			canPlace = false;
+		}
+		return canPlace;
+		
+	}
+	
+
 	public void LoadNextScene()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
