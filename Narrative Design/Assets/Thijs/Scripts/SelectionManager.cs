@@ -17,6 +17,9 @@ public class SelectionManager : MonoBehaviour
 	[SerializeField] private GameObject placeParent;
     public Pickup currentObject;
 	public Transform _selection;
+
+	[SerializeField] Pickup[] pickups;
+	[SerializeField] Pickup finalObject;
 	
 
     // Update is called once per frame
@@ -70,7 +73,6 @@ public class SelectionManager : MonoBehaviour
 					if (currentObject != null)
 					{
 						placeParent = selection.Find("Parent").gameObject;
-						Debug.Log("parent found");
 						PutDown();
 					}
 				}
@@ -114,15 +116,33 @@ public class SelectionManager : MonoBehaviour
 			//currentObject.GetComponent<Collider>().enabled = true;
 			currentObject.transform.position = placeParent.transform.position;
 			currentObject.transform.parent = placeParent.transform;
-			//currentObject.transform.localScale = new Vector3(1, 1, 1);
+			currentObject.transform.localRotation = Quaternion.identity;
+			currentObject.GetComponent<Pickup>().isPlaced = true;
+			CheckIfDone();
 			print("put down object");
+			print("Is placed" + currentObject);
 			currentObject = null;
 		}
 		else
 		{
 			print("cannot place here");
 		}
+	}
 
-
+	private void CheckIfDone()
+	{
+		if(pickups[0].isPlaced == true)
+		{
+			if (pickups[1].isPlaced == true)
+			{
+				if (pickups[2].isPlaced == true)
+				{
+					if (pickups[3].isPlaced == true)
+					{
+						finalObject.gameObject.SetActive(true);
+					}
+				}
+			}
+		}
 	}
 }

@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
 
 	[SerializeField] int objectType;
 	public bool canPlace = true;
+	public bool isPlaced = false;
 
 	public bool PlaceObject(Pickup currentObject, Transform PlaceObject)
 	{
