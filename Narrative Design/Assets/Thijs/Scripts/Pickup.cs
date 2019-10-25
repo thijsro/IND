@@ -16,6 +16,7 @@ public class Pickup : MonoBehaviour
 		if(currentObject.objectType == PlaceObject.GetComponent<Pickup>().objectType)
 		{
 			canPlace = true;
+			Debug.Log("canplace is true");
 		}
 		else
 		{
