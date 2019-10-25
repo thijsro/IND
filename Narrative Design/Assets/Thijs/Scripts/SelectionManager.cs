@@ -36,7 +36,7 @@ public class SelectionManager : MonoBehaviour
         if(Physics.Raycast(ray, out hit, hitDistance, objectLayer))
         {
             var selection = hit.transform;
-			Pickup pickedUpObject = hit.collider.gameObject.GetComponent<Pickup>();
+			Pickup pickedUpObject = hit.collider.gameObject.GetComponentInChildren<Pickup>();
             if(selection.CompareTag(selectableTag))
 			{
 				SetHighlightMaterial(selection);
@@ -104,7 +104,7 @@ public class SelectionManager : MonoBehaviour
 		currentObject.GetComponent<Collider>().enabled = false;
 		currentObject.transform.parent = playerParent.transform;
 		currentObject.transform.position = playerParent.transform.position;
-        currentObject.transform.localScale = new Vector3(1,1,1);
+        //currentObject.transform.localScale = new Vector3(1,1,1);
 		print("picked up object");
     }
 
@@ -131,18 +131,9 @@ public class SelectionManager : MonoBehaviour
 
 	private void CheckIfDone()
 	{
-		if(pickups[0].isPlaced == true)
+		if(pickups[0].isPlaced == true && pickups[1].isPlaced == true && pickups[2].isPlaced == true && pickups[3].isPlaced == true)
 		{
-			if (pickups[1].isPlaced == true)
-			{
-				if (pickups[2].isPlaced == true)
-				{
-					if (pickups[3].isPlaced == true)
-					{
-						finalObject.gameObject.SetActive(true);
-					}
-				}
-			}
+			finalObject.gameObject.SetActive(true);
 		}
 	}
 }

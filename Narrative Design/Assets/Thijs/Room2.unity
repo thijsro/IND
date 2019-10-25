@@ -413,6 +413,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5096713814069084384, guid: 0fc9d375f9c47714ba0b5f5263ce5d98,
+        type: 3}
+      propertyPath: m_TagString
+      value: Selectable
+      objectReference: {fileID: 0}
     - target: {fileID: 1086918094689689897, guid: 0fc9d375f9c47714ba0b5f5263ce5d98,
         type: 3}
       propertyPath: m_Layer
@@ -427,6 +432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727090095895679610, guid: 0fc9d375f9c47714ba0b5f5263ce5d98,
+        type: 3}
+      propertyPath: m_TagString
+      value: Selectable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fc9d375f9c47714ba0b5f5263ce5d98, type: 3}
@@ -2837,6 +2847,63 @@ Transform:
   m_Father: {fileID: 297303787}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &732214909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5096713814069084384, guid: 0fc9d375f9c47714ba0b5f5263ce5d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 184358854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &732214913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732214909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 968af73b2fb26444abec5937498679e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFinal: 0
+  objectType: 1
+  canPlace: 1
+  isPlaced: 0
+--- !u!84 &754076732
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'Aura Directional Light : Shadow Map Render Texture'
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 0
+  m_ColorFormat: 52
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &787358033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,13 +2919,13 @@ GameObject:
   - component: {fileID: 787358037}
   - component: {fileID: 787358036}
   - component: {fileID: 787358035}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Answermachine (1)
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &787358034
 Transform:
   m_ObjectHideFlags: 0
@@ -3347,7 +3414,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickups.Array.data[2]
       value: 
-      objectReference: {fileID: 524098080}
+      objectReference: {fileID: 2060471328}
     - target: {fileID: 4393267597762672477, guid: 45153522873e16242b89ede2cfb70432,
         type: 3}
       propertyPath: pickups.Array.data[3]
@@ -3683,41 +3750,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01ee7457162067841a31ace21839e001, type: 3}
---- !u!84 &965499679
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'Aura Directional Light : Shadow Map Render Texture'
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 0
-  m_ColorFormat: 52
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &972962771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4210,6 +4242,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1151375498}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1161144319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8727090095895679610, guid: 0fc9d375f9c47714ba0b5f5263ce5d98,
+    type: 3}
+  m_PrefabInstance: {fileID: 184358854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1161144323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161144319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 968af73b2fb26444abec5937498679e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFinal: 0
+  objectType: 1
+  canPlace: 1
+  isPlaced: 0
 --- !u!4 &1245334200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4767245032099252365, guid: 0fc9d375f9c47714ba0b5f5263ce5d98,
@@ -4765,6 +4819,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1308659560}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &1314516952
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'Aura Directional Light : Shadow Data Render Texture'
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 32
+  m_Height: 1
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 0
+  m_ColorFormat: 52
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1315396423
 GameObject:
   m_ObjectHideFlags: 0
@@ -7038,13 +7127,13 @@ MonoBehaviour:
   overrideColor: 0
   overridingColor: {r: 0.999999, g: 0.999998, b: 0.999998, a: 1}
   useShadow: 1
-  shadowMapRenderTexture: {fileID: 965499679}
+  shadowMapRenderTexture: {fileID: 754076732}
   useCookie: 1
   cookieMapRenderTexture: {fileID: 0}
   enableOutOfPhaseColor: 0
   outOfPhaseColorStrength: 0.25
   outOfPhaseColor: {r: 1, g: 0.48999998, b: 0.39999998, a: 1}
-  shadowDataRenderTexture: {fileID: 1919135370}
+  shadowDataRenderTexture: {fileID: 1314516952}
   customDistanceFalloffThreshold: 0.5
   customDistanceFalloffPower: 2
   customCookieDistanceFalloffStartThreshold: 0.1
@@ -7550,41 +7639,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1881166334}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &1919135370
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'Aura Directional Light : Shadow Data Render Texture'
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 32
-  m_Height: 1
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 0
-  m_ColorFormat: 52
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &2011269417
 PrefabInstance:
   m_ObjectHideFlags: 0
